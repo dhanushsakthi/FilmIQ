@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmIQ Options</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #141414 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #1f1f1f;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            color: #e50914;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .subtitle {
+            color: #b3b3b3;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #e5e5e5;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #141414;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: white;
+            font-size: 14px;
+            font-family: monospace;
+            transition: border-color 0.2s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #e50914;
+        }
+        
+        .help-text {
+            margin-top: 6px;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .help-text a {
+            color: #e50914;
+            text-decoration: none;
+        }
+        
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn-save {
+            width: 100%;
+            padding: 14px;
+            background: #e50914;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .btn-save:hover {
+            background: #b20710;
+        }
+        
+        .status {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .status.success {
+            background: #46d369;
+            color: #141414;
+        }
+        
+        .status.error {
+            background: #e50914;
+            color: white;
+        }
+        
+        .info-box {
+            background: rgba(229, 9, 20, 0.1);
+            border-left: 3px solid #e50914;
+            padding: 16px;
+            margin-bottom: 24px;
+            border-radius: 4px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FilmIQ Settings</h1>
+        <p class="subtitle">Configure your API keys for movie data and AI features</p>
+        
+        <div class="info-box">
+            <strong>Note:</strong> API keys are stored securely in your browser's sync storage. 
+            Default keys are provided but may have rate limits. For best experience, use your own API keys.
+        </div>
+        
+        <form id="options-form">
+            <div class="form-group">
+                <label for="tmdb-key">TMDB API Key</label>
+                <input type="text" id="tmdb-key" placeholder="Enter your TMDB API key" />
+                <p class="help-text">
+                    Get your free API key from <a href="https://www.themoviedb.org/settings/api" target="_blank">TMDB</a>
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <label for="gemini-key">Google Gemini API Key</label>
+                <input type="text" id="gemini-key" placeholder="Enter your Gemini API key" />
+                <p class="help-text">
+                    Get your free API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>
+                </p>
+            </div>
+            
+            <button type="submit" class="btn-save">Save Settings</button>
+            
+            <div id="status" class="status"></div>
+        </form>
+    </div>
+    
+    <script src="options.js"></script>
+</body>
+</html>

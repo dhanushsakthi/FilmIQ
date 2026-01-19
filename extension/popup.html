@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmIQ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header id="navbar">
+        <div class="navbar-content">
+            <div class="navbar-left">
+                <div class="logo">FILMIQ</div>
+                <ul class="nav-menu">
+                    <li>Home</li>
+                    <li>Series</li>
+                    <li>Films</li>
+                    <li>New & Popular</li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <form id="search-form" class="search-container">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search..." />
+                    <button type="button" id="voice-btn" class="voice-btn">
+                        <svg id="mic-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" x2="12" y1="19" y2="22"></line>
+                        </svg>
+                    </button>
+                </form>
+                <div class="developer-tag">Developed by S. DHANUSH</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <div id="hero-section" class="hero">
+            <div class="hero-background">
+                <img id="hero-image" src="" alt="" />
+                <div class="hero-gradient"></div>
+            </div>
+            <div class="hero-content">
+                <h1 id="hero-title"></h1>
+                <div class="hero-meta">
+                    <span id="hero-match" class="match-score"></span>
+                    <span id="hero-year" class="year"></span>
+                </div>
+                <p id="hero-overview" class="hero-description"></p>
+                <div class="hero-buttons">
+                    <button id="hero-play-btn" class="btn-play">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span>Play Trailer</span>
+                    </button>
+                    <button class="btn-info">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                        <span>More Info</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div id="search-results" class="search-results hidden">
+            <h2 id="search-title"></h2>
+            <div id="search-grid" class="movie-grid"></div>
+        </div>
+
+        <!-- Movie Rows -->
+        <div id="movie-rows" class="movie-rows-container">
+            <!-- Trending Now -->
+            <div class="movie-row">
+                <h2 class="row-title">Trending Now</h2>
+                <div class="row-wrapper">
+                    <button class="scroll-btn scroll-left">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div id="trending-row" class="row-content"></div>
+                    <button class="scroll-btn scroll-right">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top Rated -->
+            <div class="movie-row">
+                <h2 class="row-title">Top Rated</h2>
+                <div class="row-wrapper">
+                    <button class="scroll-btn scroll-left">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div id="toprated-row" class="row-content"></div>
+                    <button class="scroll-btn scroll-right">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recently Released -->
+            <div class="movie-row">
+                <h2 class="row-title">Recently Released</h2>
+                <div class="row-wrapper">
+                    <button class="scroll-btn scroll-left">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div id="nowplaying-row" class="row-content"></div>
+                    <button class="scroll-btn scroll-right">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Trailer Modal -->
+    <div id="trailer-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div id="trailer-container" class="trailer-container">
+                <iframe id="trailer-iframe" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="utils/tmdb.js"></script>
+    <script src="utils/gemini.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
