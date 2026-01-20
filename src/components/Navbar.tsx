@@ -73,14 +73,14 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="w-[240px] flex-shrink-0 h-screen bg-black border-r border-white/10 flex flex-col p-6 z-50">
+        <nav className="w-[240px] w-60 flex-shrink-0 h-screen bg-black border-r border-white/10 flex flex-col items-flex-start p-6 z-50 relative">
             {/* Logo */}
-            <Link href="/" className="text-red-600 font-bold text-3xl tracking-tighter cursor-pointer mb-10">
+            <Link href="/" className="text-red-600 font-bold text-3xl tracking-tighter cursor-pointer mb-10 block">
                 FILMIQ
             </Link>
 
             {/* Search Input In Sidebar */}
-            <form onSubmit={handleSearchSubmit} className={`flex items-center bg-[#141414] border border-white/20 rounded-lg px-3 py-2 mb-8 transition-all ${isListening ? 'border-red-500 ring-1 ring-red-500' : 'hover:border-white/40'}`}>
+            <form onSubmit={handleSearchSubmit} className={`w-full flex items-center bg-[#141414] border border-white/20 rounded-lg px-3 py-2 mb-8 transition-all ${isListening ? 'border-red-500 ring-1 ring-red-500' : 'hover:border-white/40'}`}>
                 <Search className="w-4 h-4 text-gray-400 flex-shrink-0" />
                 <input
                     type="text"
@@ -95,27 +95,27 @@ export default function Navbar() {
             </form>
 
             {/* Navigation Items */}
-            <div className="flex-1">
-                <ul className="flex flex-col space-y-4 text-sm font-medium text-gray-400">
+            <div className="w-full flex-1">
+                <ul className="flex flex-col space-y-6 text-sm font-medium text-gray-400 items-start">
                     <li className="hover:text-white cursor-pointer transition flex items-center space-x-3 text-white">
-                        <span className="w-1 h-1 bg-red-600 rounded-full"></span>
-                        <span>Home</span>
+                        <span className="w-1.5 h-1.5 bg-red-600 rounded-full"></span>
+                        <span className="font-bold">Home</span>
                     </li>
-                    <li className="hover:text-white cursor-pointer transition">Series</li>
-                    <li className="hover:text-white cursor-pointer transition">Films</li>
-                    <li className="hover:text-white cursor-pointer transition">New & Popular</li>
+                    <li className="hover:text-white cursor-pointer transition pl-4">Series</li>
+                    <li className="hover:text-white cursor-pointer transition pl-4">Films</li>
+                    <li className="hover:text-white cursor-pointer transition pl-4">New & Popular</li>
                 </ul>
             </div>
 
             {/* Bottom Profile/Info */}
-            <div className="pt-6 border-t border-white/10 space-y-4">
+            <div className="w-full pt-6 border-t border-white/10 space-y-4">
                 <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded bg-blue-600 flex items-center justify-center cursor-pointer overflow-hidden">
-                        <User className="text-white w-5 h-5" />
+                    <div className="w-10 h-10 rounded bg-blue-600 flex items-center justify-center cursor-pointer overflow-hidden flex-shrink-0">
+                        <User className="text-white w-6 h-6" />
                     </div>
-                    <div className="flex flex-col">
-                        <span className="text-xs font-bold text-white uppercase tracking-wider">S. Dhanush</span>
-                        <span className="text-[10px] text-gray-500">Developer</span>
+                    <div className="flex flex-col overflow-hidden">
+                        <span className="text-xs font-bold text-white uppercase tracking-wider truncate">S. Dhanush</span>
+                        <span className="text-[10px] text-gray-500">Sr. Developer</span>
                     </div>
                 </div>
                 <div className="flex items-center space-x-4 text-gray-500">

@@ -85,10 +85,10 @@ export default function Home() {
     }
 
     return (
-        <main className="relative bg-[#141414] min-h-screen pb-20">
+        <div className="w-full pl-6 pt-6">
             {/* If there is a search active, show search results at top */}
             {searchQuery && searchResults.length > 0 ? (
-                <div className="pt-24 px-4 md:px-12">
+                <div className="px-4 md:px-6">
                     <h2 className="text-2xl text-white mb-6">Search Results for "{searchQuery}"</h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                         {searchResults.map(movie => (
@@ -103,20 +103,19 @@ export default function Home() {
                     </div>
                 </div>
             ) : (
-
-                <>
+                <div className="space-y-12">
                     <Hero movies={trending} onPlayClick={handleMovieClick} />
-                    <div className="relative z-20 pb-20 space-y-2">
+                    <div className="relative z-20 pb-20 space-y-12">
                         <MovieRow title="Trending Now" movies={trending} onMovieClick={handleMovieClick} />
                         <MovieRow title="Top Rated" movies={topRated} onMovieClick={handleMovieClick} />
                         <MovieRow title="Recently Released" movies={nowPlaying} onMovieClick={handleMovieClick} />
                     </div>
-                </>
+                </div>
             )}
 
             {selectedMovieId && (
                 <TrailerModal movieId={selectedMovieId} onClose={() => setSelectedMovieId(null)} />
             )}
-        </main>
+        </div>
     )
 }

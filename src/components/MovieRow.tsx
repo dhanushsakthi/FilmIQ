@@ -23,13 +23,13 @@ export default function MovieRow({ title, movies, onMovieClick }: MovieRowProps)
     };
 
     return (
-        <div className="flex flex-col space-y-4 px-4 md:px-8 my-10 group/row-parent">
+        <div className="flex flex-col space-y-6 px-4 md:px-6 w-full group/row-parent">
             {/* Header: Title and Arrows */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between pr-8">
                 <h2 className="text-xl md:text-2xl font-bold text-white tracking-wide">
                     {title}
                 </h2>
-                <div className="flex items-center space-x-2 opacity-0 group-hover/row-parent:opacity-100 transition-opacity duration-300">
+                <div className="flex items-center space-x-3 opacity-0 group-hover/row-parent:opacity-100 transition-opacity duration-300">
                     <button
                         onClick={() => scroll('left')}
                         className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
@@ -46,13 +46,13 @@ export default function MovieRow({ title, movies, onMovieClick }: MovieRowProps)
             </div>
 
             {/* Row Content */}
-            <div className="relative">
+            <div className="relative w-full">
                 <div
                     ref={rowRef}
-                    className="flex items-center space-x-4 overflow-x-auto scrollbar-hide pb-4 snap-x"
+                    className="flex flex-row items-center gap-4 overflow-x-auto scrollbar-hide pb-4 flex-nowrap"
                 >
                     {movies.map((movie) => (
-                        <div key={movie.id} className="flex-shrink-0 snap-start">
+                        <div key={movie.id} className="flex-shrink-0">
                             <MovieCard movie={movie} onClick={onMovieClick} />
                         </div>
                     ))}
