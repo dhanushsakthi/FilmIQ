@@ -25,17 +25,24 @@ export default function Home() {
             setIsLoading(true);
             setError(null);
             try {
-                const [trend, top, now] = await Promise.all([
-                    getTrendingMovies(),
-                    getTopRatedMovies(),
-                    getNowPlayingMovies()
+                const results = await Promise.allSettled([
+                    fetch("/api/trending").then(r => r.json()),
+                    fetch("/api/top-rated").then(r => r.json()),
+                    fetch("/api/now-playing").then(r => r.json()),
                 ]);
-                setTrending(trend);
-                setTopRated(top);
-                setNowPlaying(now);
+
+                const trendData = results[0].status === "fulfilled" && results[0].value.results ? results[0].value.results : [];
+                const topData = results[1].status === "fulfilled" && results[1].value.results ? results[1].value.results : [];
+                const nowData = results[2].status === "fulfilled" && results[2].value.results ? results[2].value.results : [];
+
+                setTrending(trendData);
+                setTopRated(topData);
+                setNowPlaying(nowData);
             } catch (err) {
                 console.error("Failed to fetch initial data", err);
-                setError("Failed to load movies. Please check your connection.");
+                setTrending([]);
+                setTopRated([]);
+                setNowPlaying([]);
             } finally {
                 setIsLoading(false);
             }
