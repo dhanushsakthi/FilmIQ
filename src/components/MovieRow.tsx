@@ -23,30 +23,40 @@ export default function MovieRow({ title, movies, onMovieClick }: MovieRowProps)
     };
 
     return (
-        <div className="space-y-2 md:space-y-4 px-4 md:px-12 my-8 group">
-            <h2 className="text-xl md:text-2xl font-semibold text-gray-100 transition duration-200 hover:text-white cursor-pointer ml-2">
-                {title}
-            </h2>
+        <div className="flex flex-col space-y-4 px-4 md:px-8 my-10 group/row-parent">
+            {/* Header: Title and Arrows */}
+            <div className="flex items-center justify-between">
+                <h2 className="text-xl md:text-2xl font-bold text-white tracking-wide">
+                    {title}
+                </h2>
+                <div className="flex items-center space-x-2 opacity-0 group-hover/row-parent:opacity-100 transition-opacity duration-300">
+                    <button
+                        onClick={() => scroll('left')}
+                        className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+                    >
+                        <ChevronLeft className="w-5 h-5 text-white" />
+                    </button>
+                    <button
+                        onClick={() => scroll('right')}
+                        className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+                    >
+                        <ChevronRight className="w-5 h-5 text-white" />
+                    </button>
+                </div>
+            </div>
 
-            <div className="relative group/row">
-                <ChevronLeft
-                    className="absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover/row:opacity-100 text-white bg-black/30 rounded-full p-2"
-                    onClick={() => scroll('left')}
-                />
-
+            {/* Row Content */}
+            <div className="relative">
                 <div
                     ref={rowRef}
-                    className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5"
+                    className="flex items-center space-x-4 overflow-x-auto scrollbar-hide pb-4 snap-x"
                 >
                     {movies.map((movie) => (
-                        <MovieCard key={movie.id} movie={movie} onClick={onMovieClick} />
+                        <div key={movie.id} className="flex-shrink-0 snap-start">
+                            <MovieCard movie={movie} onClick={onMovieClick} />
+                        </div>
                     ))}
                 </div>
-
-                <ChevronRight
-                    className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover/row:opacity-100 text-white bg-black/30 rounded-full p-2"
-                    onClick={() => scroll('right')}
-                />
             </div>
         </div>
     );

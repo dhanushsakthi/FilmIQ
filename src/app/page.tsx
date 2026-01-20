@@ -106,7 +106,7 @@ export default function Home() {
 
                 <>
                     <Hero movies={trending} onPlayClick={handleMovieClick} />
-                    <div className="relative z-20 -mt-10 md:-mt-32 space-y-4">
+                    <div className="relative z-20 pb-20 space-y-2">
                         <MovieRow title="Trending Now" movies={trending} onMovieClick={handleMovieClick} />
                         <MovieRow title="Top Rated" movies={topRated} onMovieClick={handleMovieClick} />
                         <MovieRow title="Recently Released" movies={nowPlaying} onMovieClick={handleMovieClick} />

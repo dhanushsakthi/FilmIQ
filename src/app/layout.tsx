@@ -17,9 +17,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <Navbar />
-                {children}
+            <body className={`${inter.className} bg-[#141414] text-white overflow-hidden`}>
+                <div className="flex h-screen w-screen overflow-hidden">
+                    <Navbar />
+                    <div className="flex-1 overflow-y-auto overflow-x-hidden relative">
+                        {children}
+                    </div>
+                </div>
             </body>
         </html>
     )

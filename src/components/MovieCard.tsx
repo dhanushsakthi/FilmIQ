@@ -12,7 +12,7 @@ export default function MovieCard({ movie, onClick }: MovieCardProps) {
     return (
         <motion.div
             whileHover={{ scale: 1.05, zIndex: 10 }}
-            className="relative min-w-[160px] md:min-w-[200px] h-[240px] md:h-[300px] cursor-pointer rounded-md overflow-hidden mr-2 md:mr-4"
+            className="relative min-w-[160px] md:min-w-[200px] h-[240px] md:h-[300px] cursor-pointer rounded-md overflow-hidden"
             onClick={() => onClick(movie)}
         >
             <img

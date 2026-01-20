@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
-import ReactPlayer from 'react-player/youtube';
 import { getMovieVideos } from '@/lib/tmdb';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -54,12 +53,13 @@ export default function TrailerModal({ movieId, onClose }: TrailerModalProps) {
                     </button>
 
                     {trailerKey ? (
-                        <ReactPlayer
-                            url={`https://www.youtube.com/watch?v=${trailerKey}`}
+                        <iframe
+                            src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&origin=${window.location.origin}`}
                             width="100%"
                             height="100%"
-                            playing={true}
-                            controls={true}
+                            frameBorder="0"
+                            allow="autoplay; encrypted-media"
+                            allowFullScreen
                         />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-white">

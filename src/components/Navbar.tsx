@@ -73,46 +73,55 @@ export default function Navbar() {
     };
 
     return (
-        <header className={`fixed top-0 w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? "bg-[#141414]" : "bg-gradient-to-b from-black/80 to-transparent"}`}>
-            <div className="flex items-center justify-between px-4 md:px-10 py-4">
-                {/* Left: Logo */}
-                <div className="flex items-center space-x-8">
-                    <Link href="/" className="text-red-600 font-bold text-3xl tracking-tighter cursor-pointer">
-                        FILMIQ
-                    </Link>
-                    <ul className="hidden md:flex space-x-4 text-sm font-light text-[#e5e5e5]">
-                        <li className="hover:text-gray-300 cursor-pointer transition">Home</li>
-                        <li className="hover:text-gray-300 cursor-pointer transition">Series</li>
-                        <li className="hover:text-gray-300 cursor-pointer transition">Films</li>
-                        <li className="hover:text-gray-300 cursor-pointer transition">New & Popular</li>
-                    </ul>
-                </div>
+        <nav className="w-[240px] flex-shrink-0 h-screen bg-black border-r border-white/10 flex flex-col p-6 z-50">
+            {/* Logo */}
+            <Link href="/" className="text-red-600 font-bold text-3xl tracking-tighter cursor-pointer mb-10">
+                FILMIQ
+            </Link>
 
-                {/* Right: Search & Profile */}
-                <div className="flex items-center space-x-4">
-                    <form onSubmit={handleSearchSubmit} className={`flex items-center bg-black/50 border border-white/30 rounded-full px-3 py-1 transition-all ${isListening ? 'border-red-500 ring-red-500 ring-1' : ''}`}>
-                        <Search className="w-5 h-5 text-gray-400" />
-                        <input
-                            type="text"
-                            placeholder={isListening ? "Listening..." : "Search..."}
-                            className="bg-transparent border-none focus:outline-none text-white text-sm ml-2 w-24 md:w-64"
-                            value={searchInput}
-                            onChange={(e) => setSearchInput(e.target.value)}
-                        />
-                        <button type="button" onClick={startVoiceSearch} className="ml-2 hover:bg-white/10 rounded-full p-1 transition">
-                            <Mic className={`w-4 h-4 ${isListening ? 'text-red-500 animate-pulse' : 'text-gray-400'}`} />
-                        </button>
-                    </form>
+            {/* Search Input In Sidebar */}
+            <form onSubmit={handleSearchSubmit} className={`flex items-center bg-[#141414] border border-white/20 rounded-lg px-3 py-2 mb-8 transition-all ${isListening ? 'border-red-500 ring-1 ring-red-500' : 'hover:border-white/40'}`}>
+                <Search className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                <input
+                    type="text"
+                    placeholder={isListening ? "Listening..." : "Search..."}
+                    className="bg-transparent border-none focus:outline-none text-white text-sm ml-2 w-full"
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                />
+                <button type="button" onClick={startVoiceSearch} className="ml-1 hover:bg-white/10 rounded-full p-1 transition">
+                    <Mic className={`w-3.5 h-3.5 ${isListening ? 'text-red-500 animate-pulse' : 'text-gray-400'}`} />
+                </button>
+            </form>
 
-                    <div className="hidden md:flex items-center space-x-4 text-sm font-light">
-                        <span className="text-gray-300">Developed by S. DHANUSH</span>
-                        <Bell className="w-5 h-5 text-white cursor-pointer" />
-                        <div className="w-8 h-8 rounded bg-blue-600 flex items-center justify-center cursor-pointer">
-                            <User className="text-white w-5 h-5" />
-                        </div>
+            {/* Navigation Items */}
+            <div className="flex-1">
+                <ul className="flex flex-col space-y-4 text-sm font-medium text-gray-400">
+                    <li className="hover:text-white cursor-pointer transition flex items-center space-x-3 text-white">
+                        <span className="w-1 h-1 bg-red-600 rounded-full"></span>
+                        <span>Home</span>
+                    </li>
+                    <li className="hover:text-white cursor-pointer transition">Series</li>
+                    <li className="hover:text-white cursor-pointer transition">Films</li>
+                    <li className="hover:text-white cursor-pointer transition">New & Popular</li>
+                </ul>
+            </div>
+
+            {/* Bottom Profile/Info */}
+            <div className="pt-6 border-t border-white/10 space-y-4">
+                <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded bg-blue-600 flex items-center justify-center cursor-pointer overflow-hidden">
+                        <User className="text-white w-5 h-5" />
+                    </div>
+                    <div className="flex flex-col">
+                        <span className="text-xs font-bold text-white uppercase tracking-wider">S. Dhanush</span>
+                        <span className="text-[10px] text-gray-500">Developer</span>
                     </div>
                 </div>
+                <div className="flex items-center space-x-4 text-gray-500">
+                    <Bell className="w-5 h-5 cursor-pointer hover:text-white transition" />
+                </div>
             </div>
-        </header>
+        </nav>
     )
 }
