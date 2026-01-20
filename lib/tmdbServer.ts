@@ -9,11 +9,14 @@ export async function fetchTMDB(endpoint: string, params: Record<string, string>
     }
 
     const url = new URL(`${TMDB_BASE_URL}${endpoint}`);
-    url.searchParams.append('api_key', TMDB_TOKEN);
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
     try {
         const response = await fetch(url.toString(), {
+            headers: {
+                'Authorization': `Bearer ${TMDB_TOKEN}`,
+                'Accept': 'application/json'
+            },
             next: { revalidate: 3600 } // Cache for 1 hour
         });
 
